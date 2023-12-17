@@ -1,4 +1,4 @@
-
+import numpy as np
 import os, sys
 from tdc.single_pred import ADME
 from tdc.single_pred import Tox
@@ -20,7 +20,7 @@ def main():
     #-------------------------------------------------------------------------------
     if sets == 'ADME':
        data = ADME(name = set_name)
-    else
+    else:
        data = Tox(name = set_name)
     
     dall = data.get_data()
