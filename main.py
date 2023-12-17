@@ -29,10 +29,17 @@ def main():
     Test = split['test']
     y_train = list(Train['Y'])
     y_test = list(Test['Y'])
-    print('============================')
-    print('Number of data points =', len(y_train) + len(y_test))
+    print('===========================================')
+    print(f'Number of data points = {len(y_train) + len(y_test)}')
     if task == 'classification':
-        print('Percent of positives data points=', np.sum(y_train)/len(y_train))
+        print(f'Percent of positive data points = {np.sum(y_train) / len(y_train) * 100:.2f}%')
+
+    #------------------- extract graph features ---------------------
+    compound_iso_smiles = list(dall['Drug'])
+    smile_graph = {}                      # Dictinary of features
+    structure_graph = {}
+    for smile in compound_iso_smiles:
+        g, feat_, _, _  = smile_to_graph2(smile, normalize= norm)
 
 
 
