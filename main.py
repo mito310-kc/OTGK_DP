@@ -168,14 +168,16 @@ def main():
                 outputs = model(X_test)
                 _,predicted = torch.max(outputs, 1)
 
-    
-  
         else:
             similarity_matrix = torch.Tensor(Z)
             test_data = torch.Tensor(Z_test)
             y_test = torch.Tensor(y_test)
             targets = torch.Tensor(y_train)
             input_size = similarity_matrix.size(1)
+
+            dataset = TensorDataset(similarity_matrix, targets)
+            dataloader = DataLoader(dataset, batch_size=Batch_Size, shuffle=True)
+
 
             model = KernelRegressionNN(input_size, 1)
             criterion = nn.MSELoss()
