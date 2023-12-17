@@ -2,7 +2,7 @@ import numpy as np
 import os, sys
 from tdc.single_pred import ADME
 from tdc.single_pred import Tox
-import Gbuilder 
+from Gbuilder import * 
 
 
 def main():
