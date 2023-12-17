@@ -11,6 +11,8 @@ from sklearn.preprocessing import LabelEncoder
 
 
 from models import KNNClassifier
+from models import KernelRegressionNN
+
 from Gbuilder import *
 from OTtools import *
 from utils import *
@@ -128,55 +130,67 @@ def main():
 
 
     if run_MLP:
-        labels = y_train
-        label_encoder = LabelEncoder()
-        labels_encoded = label_encoder.fit_transform(labels)
 
-        X_train = M#Z
-        X_test = M_test
-        y_train = labels
-        y_test = y_test
+        label_encoder = LabelEncoder()
+        labels_encoded = label_encoder.fit_transform(y_train)
 
         # Convert data to PyTorch tensors
-        X_train = torch.Tensor(X_train)
-        X_test = torch.Tensor(X_test)
+        X_train = torch.Tensor(Z)
+        X_test = torch.Tensor(Z_test)
         y_train = torch.LongTensor(y_train)
         y_test = torch.LongTensor(y_test)
-
-
-        # Create the model
-        input_size = M.shape[1]  # Assuming input size is the number of features
-        num_classes = len(np.unique(labels_encoded))
-        if task =="classification":
-            model = KNNClassifier(input_size, num_classes)
-        else:
-            model = KNNClassifier(input_size, num_classes)
-
-        # Define loss and optimizer
-        criterion = nn.CrossEntropyLoss()
-        optimizer = optim.Adam(model.parameters(), lr=0.001)
-
-        # Training loop
+        
         num_epochs = 200
         batch_size = 20
 
-        for epoch in range(num_epochs):
-            for i in range(0, len(X_train), batch_size):
-                inputs = X_train[i:i+batch_size]
-                targets = y_train[i:i+batch_size]
 
-                optimizer.zero_grad()
-                outputs = model(inputs)
-                loss = criterion(outputs, targets)
-                loss.backward()
-                optimizer.step()
+        if task =="classification":
+            # Create the model
+            input_size = M.shape[1]  # Assuming input size is the number of features
+            num_classes = len(np.unique(labels_encoded))
+            model = KNNClassifier(input_size, num_classes)
+            criterion = nn.CrossEntropyLoss()
+            optimizer = optim.Adam(model.parameters(), lr=0.001)
 
-        # Evaluate the model on the test set
-        model.eval()
-        with torch.no_grad():
-            outputs = model(X_test)
-            _,predicted = torch.max(outputs, 1)
-            accuracy = (predicted == y_test).sum().item() / len(y_test)
+            for epoch in range(num_epochs):
+                for i in range(0, len(X_train), batch_size):
+                    inputs = X_train[i:i+batch_size]
+                    targets = y_train[i:i+batch_size]
+
+                    optimizer.zero_grad()
+                    outputs = model(inputs)
+                    loss = criterion(outputs, targets)
+                    loss.backward()
+                    optimizer.step()
+
+            model.eval()
+            with torch.no_grad():
+                outputs = model(X_test)
+                _,predicted = torch.max(outputs, 1)
+
+    
+  
+        else:
+            similarity_matrix = torch.Tensor(Z)
+            test_data = torch.Tensor(Z_test)
+            y_test = torch.Tensor(y_test)
+            targets = torch.Tensor(y_train)
+            input_size = similarity_matrix.size(1)
+
+            model = KernelRegressionNN(input_size, 1)
+            criterion = nn.MSELoss()
+            optimizer = optim.Adam(model.parameters(), lr=0.001)
+            for epoch in range(epochs):
+                for inputs, targets in dataloader:
+                    optimizer.zero_grad()
+                    outputs = model(inputs)
+                    loss = criterion(outputs.float(), targets.unsqueeze(1).float())  # Ensure targets have the right shape
+                    loss.backward()
+
+                    optimizer.step()
+
+            predicted = model(test_data)
+
 
 
         results = evaluate(predicted,y_test, task)
