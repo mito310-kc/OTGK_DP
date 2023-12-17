@@ -8,16 +8,17 @@ from OTtools import *
 
 def main():
     #----------- Model Inputs ------------------------
-    set_name ='ppbr_az'       # Choose dataset
+    set_name ='caco2_wang'       # Choose dataset
     sets = 'ADME'                     # The prediction task, (ADME, Tox)
     task = 'regression'               # The type of the task to be done, (classification vs regression, classification2, regression2)
     #---------------- Specify the measure/embdgs + and the distance metrix used in the cost matrix ---------
     embdgs = False                    # If you apply an embedding scheme at the extracted features or not
-    otsolver = 'FGW'         # The used optimal transport method, GWasserstein, wasserstein, FGW
+    otsolver = 'wasserstein'         # The used optimal transport method, GWasserstein, wasserstein, FGW
     fm = 'euclidean'                  # The distance metrix to be applied in order to generate the cost matrix needed for optimal transport
     gamma = 12                        # The scaling parameter used in the kernel
     
     norm = False                      # Normalize the features on the nodes
+    save_sim = False
     #-------------------------------------------------------------------------------
     if sets == 'ADME':
        data = ADME(name = set_name)
@@ -51,7 +52,20 @@ def main():
     unique_drug1 = np.asarray(list(Train['Drug']))
     unique_drug2 = unique_drug1
 
+    print('------------ Compute Similarity matrix')
+
     M = compute_distances_btw_graphs_with_embdgs(unique_drug1,unique_drug2,smile_graph = smile_graph,structure_graph = structure_graph , embdgs = embdgs, fm = fm, otsolver=otsolver)
+    
+    if save_sim:
+        np.save('TDC_M_train_FGW_'+ str(sets) + '_' + str(set_name) +'.npy', M)
+    
+    ################################ get the matrix for the testing part ####################################
+    
+    unique_drug1_test = np.asarray(list(Test['Drug']))
+    M_test = compute_distances_btw_graphs_with_embdgs(unique_drug1_test,unique_drug2,smile_graph = smile_graph,structure_graph = structure_graph, embdgs = embdgs, fm = fm, otsolver=otsolver, Train=False)
+    
+    if save_sim:
+        np.save('TDC_M_test_FGW_'+ str(sets) + '_' + str(set_name) +'.npy', M)
 
 
 
