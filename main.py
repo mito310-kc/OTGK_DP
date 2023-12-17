@@ -1,5 +1,8 @@
+
 import os, sys
 from tdc.single_pred import ADME
+from tdc.single_pred import Tox
+
 
 
 def main():
@@ -17,9 +20,28 @@ def main():
     #-------------------------------------------------------------------------------
     if sets == 'ADME':
        data = ADME(name = set_name)
+    else
+       data = Tox(name = set_name)
+    
+    dall = data.get_data()
+    split = data.get_split(method = 'scaffold', seed = 42, frac = [0.8, 0.0, 0.2])
+    Train = split['train']
+    Test = split['test']
+    y_train = list(Train['Y'])
+    y_test = list(Test['Y'])
+    print('============================')
+    print('Number of data points =', len(y_train) + len(y_test))
+    if task == 'classification':
+        print('Percent of positives data points=', np.sum(y_train)/len(y_train))
+
+
+
+
 
 
 
 
 if __name__ == "__main__":
     main()
+
+
