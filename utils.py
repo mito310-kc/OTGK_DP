@@ -1,4 +1,5 @@
 import numpy as np
+from tdc import Evaluator
 
 
 def one_of_k_encoding_unk(x, allowable_set):
@@ -52,4 +53,27 @@ def hamming_dist(x,y):
     return len([i for i, j in zip(x, y) if i != j])
 
 
+
+
+
+def evaluate(y_preds,y_test, task):
+    if task == 'classification':
+        evaluator1 = Evaluator(name = 'PR-AUC')
+        score1 =  evaluator1(y_test, y_preds)
+        evaluator2 = Evaluator(name = 'ROC-AUC')
+        score2 =  evaluator2(y_test, y_preds)
+        results = {'PR-AUC':score1 , 'ROC-AUC': score2}
+
+    elif task == 'regression':
+        evaluator1 = Evaluator(name = 'spearman')
+        score1 = evaluator1(y_test, y_preds)
+        evaluator2 = Evaluator(name = 'MAE')
+        score2 = evaluator2(y_test, y_preds)
+        results = {'Spearman':score1 , 'MAE': score2}
+    return results
+
+
+
+
+ 
 
