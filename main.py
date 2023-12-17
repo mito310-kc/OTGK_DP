@@ -193,7 +193,8 @@ def main():
                     optimizer.step()
 
             predicted = model(test_data)
-
+            y_test = y_test.tolist()
+            predicted = predictions.tolist()
 
 
         results = evaluate(predicted,y_test, task)
