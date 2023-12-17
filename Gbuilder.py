@@ -1,10 +1,11 @@
+import numpy as np
 from rdkit import Chem
 import networkx as nx
 from rdkit.Chem import Descriptors
 from scipy.sparse.csgraph import shortest_path
 from rdkit.Chem.Fingerprints import FingerprintMols
 import pandas as pd
-import utils
+from utils import *
 
 
 '''
