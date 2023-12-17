@@ -177,7 +177,7 @@ def main():
             input_size = similarity_matrix.size(1)
 
             dataset = TensorDataset(similarity_matrix, targets)
-            dataloader = DataLoader(dataset, batch_size=Batch_Size, shuffle=True)
+            dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
 
             model = KernelRegressionNN(input_size, 1)
