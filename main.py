@@ -10,7 +10,7 @@ import torch.optim as optim
 from sklearn.preprocessing import LabelEncoder
 
 
-
+from models import KNNClassifier
 from Gbuilder import *
 from OTtools import *
 from utils import *
@@ -28,6 +28,7 @@ def main():
     
     norm = False                      # Normalize the features on the nodes
     save_sim = False
+    run_MLP = True
     #-------------------------------------------------------------------------------
     if sets == 'ADME':
        data = ADME(name = set_name)
