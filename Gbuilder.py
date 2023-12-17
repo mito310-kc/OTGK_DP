@@ -4,7 +4,7 @@ from rdkit.Chem import Descriptors
 from scipy.sparse.csgraph import shortest_path
 from rdkit.Chem.Fingerprints import FingerprintMols
 import pandas as pd
-
+import utils
 
 
 '''
