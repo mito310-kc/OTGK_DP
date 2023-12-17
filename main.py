@@ -4,6 +4,10 @@ from tdc.single_pred import ADME
 from tdc.single_pred import Tox
 from sklearn.svm import SVC
 from sklearn.svm import SVR
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from sklearn.preprocessing import LabelEncoder
 
 
 
@@ -104,6 +108,7 @@ def main():
         y_preds0 = svc.predict_proba(Z_test)
         y_preds = y_preds0[:, 1]
     
+
     elif task == 'regression':
         #--------------- Regression using SVR
         C=1
@@ -114,17 +119,69 @@ def main():
         # test
         y_preds = svr.predict(Z_test)
 
+
     results = evaluate(y_preds,y_test, task)
+    print(f'--------------- SV {task} Results---------------')
     for key in results:
         print(f"{key}: {results[key]}")
 
 
-    
+    if run_MLP:
+        labels = y_train
+        label_encoder = LabelEncoder()
+        labels_encoded = label_encoder.fit_transform(labels)
+
+        X_train = M#Z
+        X_test = M_test
+        y_train = labels
+        y_test = y_test
+
+        # Convert data to PyTorch tensors
+        X_train = torch.Tensor(X_train)
+        X_test = torch.Tensor(X_test)
+        y_train = torch.LongTensor(y_train)
+        y_test = torch.LongTensor(y_test)
 
 
+        # Create the model
+        input_size = M.shape[1]  # Assuming input size is the number of features
+        num_classes = len(np.unique(labels_encoded))
+        if task =="classification":
+            model = KNNClassifier(input_size, num_classes)
+        else:
+            model = KNNClassifier(input_size, num_classes)
+
+        # Define loss and optimizer
+        criterion = nn.CrossEntropyLoss()
+        optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+        # Training loop
+        num_epochs = 200
+        batch_size = 20
+
+        for epoch in range(num_epochs):
+            for i in range(0, len(X_train), batch_size):
+                inputs = X_train[i:i+batch_size]
+                targets = y_train[i:i+batch_size]
+
+                optimizer.zero_grad()
+                outputs = model(inputs)
+                loss = criterion(outputs, targets)
+                loss.backward()
+                optimizer.step()
+
+        # Evaluate the model on the test set
+        model.eval()
+        with torch.no_grad():
+            outputs = model(X_test)
+            _,predicted = torch.max(outputs, 1)
+            accuracy = (predicted == y_test).sum().item() / len(y_test)
 
 
-
+        results = evaluate(predicted,y_test, task)
+        print(f'--------------- MLP {task} Results---------------')
+        for key in results:
+            print(f"{key}: {results[key]}")
 
 
 
