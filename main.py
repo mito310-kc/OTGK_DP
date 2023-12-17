@@ -180,7 +180,7 @@ def main():
             model = KernelRegressionNN(input_size, 1)
             criterion = nn.MSELoss()
             optimizer = optim.Adam(model.parameters(), lr=0.001)
-            for epoch in range(epochs):
+            for epoch in range(num_epochs):
                 for inputs, targets in dataloader:
                     optimizer.zero_grad()
                     outputs = model(inputs)
