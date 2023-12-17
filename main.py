@@ -65,11 +65,11 @@ def main():
         np.save('TDC_M_train_FGW_'+ str(sets) + '_' + str(set_name) +'.npy', M)
     
     ################################ get the matrix for the testing part ####################################
-    
+    print('------------ Compute Similarity matrix required for testing')
+
     unique_drug1_test = np.asarray(list(Test['Drug']))
     M_test = compute_distances_btw_graphs_with_embdgs(unique_drug1_test,unique_drug2,smile_graph = smile_graph,structure_graph = structure_graph, embdgs = embdgs, fm = fm, otsolver=otsolver, Train=False)
     
-    print('------------ Compute Similarity matrix required for testing')
     if save_sim:
         np.save('TDC_M_test_FGW_'+ str(sets) + '_' + str(set_name) +'.npy', M)
  
@@ -101,8 +101,8 @@ def main():
         svc.fit(Z, classes_)
         # test
         preds_t =svc.predict(Z_test)
-        y_preds = svc.predict_proba(Z_test)
-        y_preds1 = y_preds[:, 1]
+        y_preds0 = svc.predict_proba(Z_test)
+        y_preds = y_preds0[:, 1]
     
     elif task == 'regression':
         #--------------- Regression using SVR
