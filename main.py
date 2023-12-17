@@ -19,9 +19,9 @@ from utils import *
 
 def main():
     #----------- Model Inputs ------------------------
-    set_name ='hia_hou'       # Choose dataset
+    set_name ='half_life_obach'       # Choose dataset
     sets = 'ADME'                     # The prediction task, (ADME, Tox)
-    task = 'classification'               # The type of the task to be done, (classification vs regression, classification2, regression2)
+    task = 'regression'               # The type of the task to be done, (classification vs regression)
     #---------------- Specify the measure/embdgs + and the distance metrix used in the cost matrix ---------
     embdgs = False                    # If you apply an embedding scheme at the extracted features or not
     otsolver = 'wasserstein'         # The used optimal transport method, GWasserstein, wasserstein, FGW
