@@ -2,8 +2,9 @@ import numpy as np
 import os, sys
 from tdc.single_pred import ADME
 from tdc.single_pred import Tox
-from Gbuilder import * 
 
+from Gbuilder import *
+from OTtools import *
 
 def main():
     #----------- Model Inputs ------------------------
@@ -40,6 +41,20 @@ def main():
     structure_graph = {}
     for smile in compound_iso_smiles:
         g, feat_, _, _  = smile_to_graph2(smile, normalize= norm)
+        if otsolver != 'Wasserstein':
+            #g, _, _, _ = smile_to_graph2(smile)
+            C = structure_matrix(g, method='adjency')     # harmonic_distance, adjency, shortest_path
+            structure_graph[smile] =
+    
+    ############################# get the similarity matrix for the training set ############################
+    unique_drug1 = np.asarray(list(Train['Drug']))
+    unique_drug2 = unique_drug1
+
+    M = compute_distances_btw_graphs_with_embdgs(unique_drug1,unique_drug2,smile_graph = smile_graph,structure_graph = structure_graph , embdgs = embdgs, fm = fm, otsolver=otsolver)
+
+
+
+
 
 
 
