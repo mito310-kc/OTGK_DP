@@ -41,8 +41,9 @@ def main():
     structure_graph = {}
     for smile in compound_iso_smiles:
         g, feat_, _, _  = smile_to_graph2(smile, normalize= norm)
+        smile_graph[smile] = feat_
         if otsolver != 'Wasserstein':
-            #g, _, _, _ = smile_to_graph2(smile)
+            #g, feat_, _, _  = smile_to_graph2(smile, normalize= norm)
             C = structure_matrix(g, method='adjency')     # harmonic_distance, adjency, shortest_path
             structure_graph[smile] = C
     

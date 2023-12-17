@@ -1,6 +1,7 @@
 import ot
 import ot.plot
 from ot.gromov import gromov_wasserstein, fused_gromov_wasserstein
+import time
 
 from itertools import islice
 
@@ -157,4 +158,3 @@ def compute_matching_similarity_embds(g1,g2, smile_graph,structure_graph, dist =
         dist_ = ot.emd2(t1masses,t2masses , costs)
 
     return dist_
-
