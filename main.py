@@ -44,7 +44,7 @@ def main():
         if otsolver != 'Wasserstein':
             #g, _, _, _ = smile_to_graph2(smile)
             C = structure_matrix(g, method='adjency')     # harmonic_distance, adjency, shortest_path
-            structure_graph[smile] =
+            structure_graph[smile] = C
     
     ############################# get the similarity matrix for the training set ############################
     unique_drug1 = np.asarray(list(Train['Drug']))
