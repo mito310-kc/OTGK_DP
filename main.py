@@ -1,4 +1,6 @@
 import os, sys
+from tdc.single_pred import ADME
+
 
 def main():
     #----------- Model Inputs ------------------------
