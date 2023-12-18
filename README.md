@@ -1,4 +1,4 @@
-# Optimal Transport Based Graph Kernel for Drug Property Prediction (OTGK_DP) 
+# Optimal Transport Based Graph Kernels for Drug Property Prediction (OTGK_DP) 
 
 This is the complete code for the OTGK_DP framework to predict ADMET durg properties. The work is pubished in the following papers: <br />
  <br />
@@ -16,10 +16,31 @@ November, 2022. Initial release <br />
 
 
 
-Find the Colab tutorial in the tutorial folder to run this repository. <br /> 
+Find the Colab tutorial in the tutorial folder to run this repository and to predict the drug properties. <br /> 
+The data used in this project is TDC
+
 Make sure to install the following dependincies: 
 
 
 
+Cite as:
+```
+@inproceedings{Kube2020,
+   author = {M. Aburidi and R. Marica},
+   journal = {Scientific Reports},
+   title = {Optimal Transport-Based Graph Kernels for Drug Property Prediction},
+   url = {},
+   year = {2024},
+}
 
+
+
+@inproceedings{Kube2020,
+   author = {M. Aburidi and R. Marica},
+   journal = {First IEEE International Conference on AI for Medicine, Health, and Care. AIMHC 2024},
+   title = {Enhancing Drug Safety and Efficacy: Wasserstein Distance-Based Graph Kernel for Drug Property Prediction}, 
+   url = {},
+   year = {2024},
+}
+```
 
