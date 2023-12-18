@@ -13,14 +13,26 @@ November, 2022. Initial release <br />
 
 <img width="1103" alt="main_fig" src="https://github.com/Maburidi/OTGK_DP/assets/48891624/a52d6c2f-9334-4af2-b596-b3213db96935">
 
-
+<br />
+<br />
+<br />
+<br />
 
 
 Find the Colab tutorial in the tutorial folder to run this repository and to predict the drug properties. <br /> 
-The data used in this project is TDC
+The data used in this project is   [Therapeutics Data Commons - TDC](https://tdcommons.ai/))
+
 
 Make sure to install the following dependincies: 
 
+```
+PyTDC
+rdkit
+torch_geometric
+POT
+py3Dmol
+
+```
 
 
 Cite as:
