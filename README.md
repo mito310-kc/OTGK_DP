@@ -35,6 +35,24 @@ py3Dmol
 ```
 
 
+
+ <br /> 
+  <br /> 
+   <br /> 
+
+
+## Main Results: 
+
+<img width="911" alt="Screen Shot 2023-12-18 at 10 33 32 AM" src="https://github.com/Maburidi/OTGK_DP/assets/48891624/174fa587-06e1-46c3-b32b-399fdea34d2c">
+
+
+
+ <br /> 
+  <br /> 
+   <br /> 
+
+
+
 Cite as:
 ```
 @inproceedings{Kube2020,
