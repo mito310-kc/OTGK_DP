@@ -21,7 +21,11 @@ November, 2022. Initial release <br />
 
 Find the Colab tutorial in the tutorial folder to run this repository and to predict the drug properties. <br /> 
 The data used in this project is   [Therapeutics Data Commons - TDC](https://tdcommons.ai/))
+To list all of the datasets in AMDE, run the following 
 
+```
+utils.retrieve_dataset_names('ADME')
+```
 
 Make sure to install the following dependincies: 
 
