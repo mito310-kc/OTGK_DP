@@ -24,12 +24,14 @@ The data used in this project is   [Therapeutics Data Commons - TDC](https://tdc
 To list all of the datasets in AMDE, run the following 
 
 ```
+from tdc import utils
 utils.retrieve_dataset_names('ADME')
 ```
 
 To list all of the datasets in TOX, run the following 
 
 ```
+from tdc import utils
 utils.retrieve_dataset_names('TOX')
 ```
 
