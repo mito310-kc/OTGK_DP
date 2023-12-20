@@ -2,9 +2,9 @@
 
 This is the complete code for the OTGK_DP framework to predict ADMET durg properties. The work is pubished in the following papers: <br />
  <br />
-Comments/Bugs/Problems: maburidi@ucmerced.edu  <br />
+Comments/Bugs/Problems: maburidi@ucmerced.edu  maburidi@gmail.com  <br />
 
-November, 2022. Initial release <br />
+December, 2023. Initial release <br />
 
 
 <br />
