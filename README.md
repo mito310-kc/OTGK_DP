@@ -69,7 +69,7 @@ py3Dmol
 
 Cite as:
 ```
-@inproceedings{Kube2020,
+@inproceedings{aburidi2024_1,
    author = {M. Aburidi and R. Marica},
    journal = {Scientific Reports},
    title = {Optimal Transport-Based Graph Kernels for Drug Property Prediction},
@@ -79,7 +79,7 @@ Cite as:
 
 
 
-@inproceedings{Kube2020,
+@inproceedings{aburidi2024_2,
    author = {M. Aburidi and R. Marica},
    journal = {First IEEE International Conference on AI for Medicine, Health, and Care. AIMHC 2024},
    title = {Enhancing Drug Safety and Efficacy: Wasserstein Distance-Based Graph Kernel for Drug Property Prediction}, 
