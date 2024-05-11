@@ -94,14 +94,16 @@ Cite as:
    year = {2024},
 }
 
+@INPROCEEDINGS{10504311,
+  author={Aburidi, Mohammed and Marcia, Roummel},
+  booktitle={2024 IEEE First International Conference on Artificial Intelligence for Medicine, Health and Care (AIMHC)}, 
+  title={Wasserstein Distance-Based Graph Kernel for Enhancing Drug Safety and Efficacy Prediction}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={113-119},
+  keywords={Drugs;Proteins;Adaptation models;Toxicology;Pharmacodynamics;Predictive models;Safety;Optimal Transport;Wasserstein Distance;Graph Matching;Drug Discovery;ADMET Properties},
+  doi={10.1109/AIMHC59811.2024.00029}}
 
-
-@inproceedings{aburidi2024_2,
-   author = {M. Aburidi and R. Marica},
-   journal = {First IEEE International Conference on AI for Medicine, Health, and Care. AIMHC 2024},
-   title = {Enhancing Drug Safety and Efficacy: Wasserstein Distance-Based Graph Kernel for Drug Property Prediction}, 
-   url = {},
-   year = {2024},
-}
 ```
 
