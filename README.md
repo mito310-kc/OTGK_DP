@@ -1,9 +1,8 @@
 # Optimal Transport Based Graph Kernels for Drug Property Prediction (OTGK_DP)
 
 This is the complete code for the OTGK_DP framework to predict ADMET durg properties. The work is pubished in the following papers: <br />
+[Paper](https://ieeexplore.ieee.org/abstract/document/10504311))
  <br />
-Comments/Bugs/Problems: maburidi@ucmerced.edu  maburidi@gmail.com  <br />
-[OTGK](https://ieeexplore.ieee.org/abstract/document/10504311))
 
 ```
 @INPROCEEDINGS{10504311,
@@ -17,6 +16,8 @@ Comments/Bugs/Problems: maburidi@ucmerced.edu  maburidi@gmail.com  <br />
   keywords={Drugs;Proteins;Adaptation models;Toxicology;Pharmacodynamics;Predictive models;Safety;Optimal Transport;Wasserstein Distance;Graph Matching;Drug Discovery;ADMET Properties},
   doi={10.1109/AIMHC59811.2024.00029}}
 ```
+ <br />
+Comments/Bugs/Problems: maburidi@ucmerced.edu  maburidi@gmail.com  <br />
 
 
 
