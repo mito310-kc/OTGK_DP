@@ -11,6 +11,8 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends --no-install-suggests \
     openssh-server \
     git \
+    curl \
+    ca-certificates \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

@@ -2064,6 +2064,7 @@ dependencies = [
     { name = "pytdc", version = "1.0.0", source = { registry = "https://pypi.org/simple" }, marker = "platform_system == 'Darwin'" },
     { name = "pytdc", version = "1.1.1", source = { registry = "https://pypi.org/simple" }, marker = "platform_system != 'Darwin'" },
     { name = "rdkit" },
+    { name = "setuptools" },
     { name = "torch-geometric" },
 ]
 
@@ -2078,6 +2079,7 @@ requires-dist = [
     { name = "py3dmol", specifier = ">=2.4.2" },
     { name = "pytdc", specifier = ">=1.0.0" },
     { name = "rdkit", specifier = ">=2023.9.6" },
+    { name = "setuptools", specifier = ">=75.6.0" },
     { name = "torch-geometric", specifier = ">=2.6.1" },
 ]
 
