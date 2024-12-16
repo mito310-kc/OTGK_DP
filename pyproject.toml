@@ -1,0 +1,18 @@
+[project]
+name = "otgk-dp"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pot>=0.9.5",
+    "py3dmol>=2.4.2",
+    "pytdc>=1.0.0",
+    "rdkit>=2023.9.6",
+    "torch-geometric>=2.6.1",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.29.5",
+]

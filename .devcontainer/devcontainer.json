@@ -1,0 +1,55 @@
+{
+    "name": "your-project-name-${localEnv:USER}",
+    "build": {
+        "dockerfile": "./Dockerfile",
+        "args": {
+            "HTTP_PROXY": "${localEnv:HTTP_PROXY}",
+            "HTTPS_PROXY": "${localEnv:HTTPS_PROXY}",
+            "USERID": "${localEnv:UID:9999}",
+            "USERNAME": "${localEnv:USER:hostuser}",
+            "GROUPID": "${localEnv:UID:9999}",
+            "GROUPNAME": "${localEnv:USER:hostuser}"
+        }
+    },
+    "containerEnv": {
+        "HTTP_PROXY": "${localEnv:HTTP_PROXY}",
+        "HTTPS_PROXY": "${localEnv:HTTPS_PROXY}",
+        "NO_PROXY": "${localEnv:NO_PROXY}"
+    },
+    "workspaceFolder": "/home/${localEnv:USER}/${localWorkspaceFolderBasename}",
+    "shutdownAction": "none",
+    "remoteUser": "${localEnv:USER}",
+    "mounts": [
+        {
+            "source": "${localEnv:HOME}/.ssh",
+            "target": "/home/${localEnv:USER}/.ssh",
+            "type": "bind"
+        },
+        {
+            "source": "${localEnv:HOME}/.gitconfig",
+            "target": "/home/${localEnv:USER}/.gitconfig",
+            "type": "bind"
+        },
+        {
+            "source": "${localWorkspaceFolder}/",
+            "target": "/home/${localEnv:USER}/${localWorkspaceFolderBasename}",
+            "type": "bind"
+        }
+    ],
+    "postAttachCommand": ".devcontainer/postAttach.sh",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "charliermarsh.ruff",
+                "ionutvmi.path-autocomplete",
+                "streetsidesoftware.code-spell-checker",
+                "ms-toolsai.jupyter",
+                "mhutchie.git-graph",
+                "njpwerner.autodocstring",
+                "ms-python.mypy-type-checker",
+                "github.vscode-github-actions"
+            ]
+        }
+    }
+}
